@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: route_get
+          uri: http://localhost:8003/
+          predicates:
+            - Path=/get
+          filters:
+            - StripPrefix=2
+        - id: route_clientes
+          uri: lb://clientes
+          predicates:
+            - Path=/clientes
+          filters:
+            - StripPrefix=2
+        - id: route_client_eureka
+          uri: lb://client-eureka
+          predicates:
+            - Path=/client-eureka
+          filters:
+            - StripPrefix=2
