@@ -5,18 +5,18 @@ spring:
         - id: route_get
           uri: http://localhost:8003/
           predicates:
-            - Path=/get
+            - Path=/api/get
           filters:
             - StripPrefix=2
         - id: route_clientes
           uri: lb://clientes
           predicates:
-            - Path=/clientes
+            - Path=/api/clientes
           filters:
             - StripPrefix=2
         - id: route_client_eureka
           uri: lb://client-eureka
           predicates:
-            - Path=/client-eureka
+            - Path=/api/client-eureka
           filters:
             - StripPrefix=2
